@@ -2058,7 +2058,7 @@ case class ValidateExternalType(child: Expression, expected: DataType, externalD
   override def doGenCode(ctx: CodegenContext, ev: ExprCode): ExprCode = {
     // Use unnamed reference that doesn't create a local field here to reduce the number of fields
     // because errMsgField is used only when the type doesn't match.
-    val errMsgField = ctx.addReferenceObj("errMsg", errMsg + " at " + child.toString())
+    val errMsgField = ctx.addReferenceObj("errMsg", errMsg + " at " + child)
     val input = child.genCode(ctx)
     val obj = input.value
     def genCheckTypes(classes: Seq[Class[_]]): String = {
