@@ -26,17 +26,17 @@ class ErrorMsgSuite extends AnyFunSuite with SharedSparkContext {
 
     val df = sqlContext.createDataFrame(sqlContext.sparkContext.parallelize(seq), schema)
 
-    val exception = intercept[SparkException] {
+    val exception = intercept[RuntimeException] {
       df.show()
     }
 
     assert(
-      exception.getCause.getCause.getMessage
+      exception.getCause.getMessage
         .contains("[B is not a valid external type for schema of string")
     )
     assertResult(
       "[B is not a valid external type for schema of string at getexternalrowfield(assertnotnull(input[0, org.apache.spark.sql.Row, true]), 1, f3)"
-    )(exception.getCause.getCause.getMessage)
+    )(exception.getCause.getMessage)
   }
 
 

@@ -4,6 +4,7 @@ version := "0.1"
 
 scalaVersion := "2.13.14"
 
+lazy val javaVersion = "17"
 lazy val sparkVersion = "4.0.0-preview1"
 lazy val typeSafeConfigVersion = "1.4.1"
 lazy val scalatestVersion = "3.2.3"
